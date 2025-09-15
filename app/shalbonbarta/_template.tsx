@@ -6,6 +6,7 @@ export default function generateJSX(data?: {
     titleFontSize?: number;
     subtitle?: string;
     subtitleFontSize?: number;
+    image?: string;
     ad?: string;
 }) {
     console.log(data);
@@ -65,15 +66,16 @@ export default function generateJSX(data?: {
                  <div
                         style={{
                             display: "flex",
-                            position: "relative",
                             width: "1900px",
                             height: "1068.75px",
+                            aspectRatio: "16/9",
                             borderRadius: "20px",
                             overflow: "hidden",
                             background:
                                 "linear-gradient(to top, rgba(255,255,255, 1), rgba(254, 254, 254, 1),  rgba(236, 28, 36, 0.5), rgba(236, 28, 36, 1))",
                             padding: "20px 25px",
                             flexShrink: 0,
+                            boxSizing: "border-box",
                         }}
                     >
                         <img
@@ -81,14 +83,12 @@ export default function generateJSX(data?: {
                                 width: "100%",
                                 height: "100%",
                                 borderRadius: "20px",
-                                objectPosition: "center",
-                                overflow: "hidden",
                                 objectFit: "cover",
+                                objectPosition: "center",
                             }}
-                            src="/images/shalbonbarta/test.jpg"
+                            src="${data?.image || "/placeholder.svg"}"
                             alt="Featured Image"
-                            width={2000}
-                            height={1000}
+                            
                         />
                     </div>
                 

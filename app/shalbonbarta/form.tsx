@@ -29,6 +29,7 @@ import {
 const formSchema = z.object({
     title: z.string().optional(),
     subtitle: z.string().min(1, "Subtitle is required").optional(),
+    image: z.string().optional(),
     titleFontSize: z.number(),
     subtitleFontSize: z.number(),
     ad: z.string().optional(),
@@ -170,6 +171,48 @@ export default function ImageGenerator() {
                                                         />
                                                     </FormControl>
                                                     <span>{field.value}px</span>
+                                                </div>
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="image"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Featured Image
+                                                </FormLabel>
+                                                <div className="flex gap-2 items-center">
+                                                    <FormControl>
+                                                        <Input
+                                                            type="file"
+                                                            accept="image/*"
+                                                            onChange={(e) =>
+                                                                e.target
+                                                                    .files &&
+                                                                field.onChange(
+                                                                    URL.createObjectURL(
+                                                                        e.target
+                                                                            .files?.[0]
+                                                                    )
+                                                                )
+                                                            }
+                                                        />
+                                                    </FormControl>
+                                                    <Button
+                                                        type="button"
+                                                        variant="outline"
+                                                        size="sm"
+                                                        onClick={() =>
+                                                            field.onChange(
+                                                                undefined
+                                                            )
+                                                        }
+                                                    >
+                                                        <Trash2 />
+                                                        Remove Image
+                                                    </Button>
                                                 </div>
                                             </FormItem>
                                         )}
