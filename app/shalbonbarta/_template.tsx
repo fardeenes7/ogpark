@@ -122,7 +122,6 @@ export default function generateJSX(data?: {
                                 color: "white",
                                 whiteSpace: "pre-ine",
                                 wordBreak: "break-word",
-                                lineHeight: "0.8",
                             }}
                         >
                             ${bnUnicode2ANSI(data?.title || "")}
